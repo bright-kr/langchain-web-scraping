@@ -1,6 +1,6 @@
 # LangChain과 Bright Data를 활용한 Webスクレイピング
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
+[![Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
 
 이 가이드는 Webスクレイピング과 LangChain을 결합하여 실제 환경의 LLM 데이터 강화(data enrichment)를 수행하는 방법을, 자세한 단계별 안내로 설명합니다.
 
@@ -34,7 +34,7 @@ Webスクレイピング은 웹사이트에서 데이터를 추출하여 RAG([Re
 
 Bright Data의 Web Scraper API를 사용해 CNN 기사에서 콘텐츠를 가져오는 LangChain Webスクレイピング 스크립트를 구축한 다음, 이를 OpenAI로 보내 요약하는 방법을 알아봅니다. 대상은 [이 CNN 기사](https://www.cnn.com/2024/12/16/weather/white-christmas-forecast-climate/)를 사용합니다.
 
-![CNN article on Christmas](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-131-1024x492.png)
+![CNN article on Christmas](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-131-1024x492.png)
 
 이 간단한 예시는 SERP 데이터 기반 AG 챗봇 생성과 같은 추가 LangChain 기능으로 쉽게 확장할 수 있습니다.
 
@@ -128,23 +128,23 @@ Web Scraper API를 설정하려면 [공식 문서](https://docs.brightdata.com/s
 
 아직 계정이 없다면 Bright Data 계정을 생성합니다. 로그인 후 계정 대시보드로 이동합니다. 여기에서 왼쪽의 “Web Scraper API” 버튼을 클릭합니다:
 
-![Choosing Web Scraper API from the menu on the left](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-133-1024x489.png)
+![Choosing Web Scraper API from the menu on the left](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-133-1024x489.png)
 
 대상 사이트는 [CNN.com](http://cnn.com/)이므로, 검색 입력에 “cnn”을 입력하고 “CNN news — Collecy by URL” スクレイ퍼를 선택합니다:
 
-![Searching for hte CNN Scraper API](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-134-1024x486.png)
+![Searching for hte CNN Scraper API](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-134-1024x486.png)
 
 현재 페이지에서 **Create token** 버튼을 클릭하여 [Bright Data API token](https://docs.brightdata.com/general/account/api-token)을 생성합니다:
 
-![Creating a new token for the API](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-135-1024x408.png)
+![Creating a new token for the API](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-135-1024x408.png)
 
 그러면 다음 모달이 열리며, 여기에서 토큰의 세부 정보를 구성할 수 있습니다:
 
-![Configuring the details of the new token](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-136.png)
+![Configuring the details of the new token](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-136.png)
 
 완료되면 **Save**를 클릭하고 Bright Data API token 값을 복사합니다.
 
-![Once you clicked save, the new token is shown](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-137.png)
+![Once you clicked save, the new token is shown](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-137.png)
 
 `.env` 파일에 아래와 같이 이 정보를 저장합니다:
 
@@ -156,7 +156,7 @@ BRIGHT_DATA_API_TOKEN="<YOUR_BRIGHT_DATA_API_TOKEN>"
 
 이제 CNN news Web Scraper API 페이지는 아래 예시와 비슷하게 보일 것입니다:
 
-![The CNN Scraper API page ](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-138-1024x492.png)
+![The CNN Scraper API page ](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-138-1024x492.png)
 
 ### Step #5: Use Bright Data for Web Scraping
 
@@ -312,7 +312,7 @@ CONTENT:
 
 이를 ChatGPT에 전달하면 다음과 같이 보일 것입니다:
 
-![Passing the task of summarizing the content in less than 100 words](https://github.com/luminati-io/langchain-web-scraping/blob/main/Images/image-139-1024x626.png)
+![Passing the task of summarizing the content in less than 100 words](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-139-1024x626.png)
 
 ### Step #8: Integrate OpenAI
 
