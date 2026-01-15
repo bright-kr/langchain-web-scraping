@@ -1,8 +1,8 @@
-# LangChain과 Bright Data를 활용한 Webスクレイピング
+# LangChain과 Bright Data를 활용한 Web스크레이핑
 
 [![Promo](https://github.com/bright-kr/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.co.kr/) 
 
-이 가이드는 Webスクレイピング과 LangChain을 결합하여 실제 환경의 LLM 데이터 강화(data enrichment)를 수행하는 방법을, 자세한 단계별 안내로 설명합니다.
+이 가이드는 Web스크레이핑과 LangChain을 결합하여 실제 환경의 LLM 데이터 강화(data enrichment)를 수행하는 방법을, 자세한 단계별 안내로 설명합니다.
 
 - [Web Scraping을 사용하여 LLM 애플리케이션을 강화하기](#using-web-scraping-to-power-your-llm-applications)
 - [LangChain에서 스크랩된 데이터 사용의 이점과 과제](#benefits-and-challenges-of-using-scraped-data-in-langchain)
@@ -24,15 +24,15 @@
 
 ## Using Web Scraping to Power Your LLM Applications
 
-Webスクレイピング은 웹사이트에서 데이터를 추출하여 RAG([Retrieval-Augmented Generation](https://brightdata.co.kr/blog/web-data/rag-explained)) 애플리케이션을 구동하고, LLM([Large Language Models](https://www.ibm.com/think/topics/large-language-models))을 활용할 수 있게 합니다. 이는 정적 데이터베이스와, 이러한 애플리케이션에 필요한 실시간/도메인 특화/대규모 データセット 간의 격차를 메웁니다.
+Web스크레이핑은 웹사이트에서 데이터를 추출하여 RAG([Retrieval-Augmented Generation](https://brightdata.co.kr/blog/web-data/rag-explained)) 애플리케이션을 구동하고, LLM([Large Language Models](https://www.ibm.com/think/topics/large-language-models))을 활용할 수 있게 합니다. 이는 정적 데이터베이스와, 이러한 애플리케이션에 필요한 실시간/도메인 특화/대규모 데이터셋 간의 격차를 메웁니다.
 
 ## Benefits and Challenges of Using Scraped Data in LangChain
 
-[LangChain](https://www.langchain.com/)은 분석, 요약, Q&A와 같은 작업을 위해 LLM을 다양한 데이터 소스와 통합합니다. 그러나 アンチボット 조치, CAPTCHA, 동적 웹사이트로 인해 고품질 데이터를 수집하는 것은 어렵습니다. Bright Data의 [Web Scraper API](https://brightdata.co.kr/products/web-scraper)는 IP 회전, CAPTCHA 해결, JavaScript 렌더링과 같은 기능으로 이러한 문제를 해결하여, 단순한 API 호출만으로 효율적이고 신뢰할 수 있는 데이터 수집을 보장합니다.
+[LangChain](https://www.langchain.com/)은 분석, 요약, Q&A와 같은 작업을 위해 LLM을 다양한 데이터 소스와 통합합니다. 그러나 안티봇 조치, CAPTCHA, 동적 웹사이트로 인해 고품질 데이터를 수집하는 것은 어렵습니다. Bright Data의 [Web Scraper API](https://brightdata.co.kr/products/web-scraper)는 IP 회전, CAPTCHA 해결, JavaScript 렌더링과 같은 기능으로 이러한 문제를 해결하여, 단순한 API 호출만으로 효율적이고 신뢰할 수 있는 데이터 수집을 보장합니다.
 
 ## LangChain Web Scraping Powered By Bright Data: Step-by-Step Guide
 
-Bright Data의 Web Scraper API를 사용해 CNN 기사에서 콘텐츠를 가져오는 LangChain Webスクレイピング 스크립트를 구축한 다음, 이를 OpenAI로 보내 요약하는 방법을 알아봅니다. 대상은 [이 CNN 기사](https://www.cnn.com/2024/12/16/weather/white-christmas-forecast-climate/)를 사용합니다.
+Bright Data의 Web Scraper API를 사용해 CNN 기사에서 콘텐츠를 가져오는 LangChain Web스크레이핑 스크립트를 구축한 다음, 이를 OpenAI로 보내 요약하는 방법을 알아봅니다. 대상은 [이 CNN 기사](https://www.cnn.com/2024/12/16/weather/white-christmas-forecast-climate/)를 사용합니다.
 
 ![CNN article on Christmas](https://github.com/bright-kr/langchain-web-scraping/blob/main/Images/image-131-1024x492.png)
 
@@ -54,7 +54,7 @@ Python 3이 설치되어 있는지 확인합니다. 그런 다음 프로젝트�
 mkdir langchain_scraping
 ```
 
-`langchain_scrping`에는 Python LangChain スクレイピング 프로젝트가 포함됩니다.
+`langchain_scrping`에는 Python LangChain 스크레이핑 프로젝트가 포함됩니다.
 
 그다음 프로젝트 폴더로 이동하여 그 안에 Python 가상 환경을 초기화합니다:
 
@@ -83,10 +83,10 @@ env/Scripts/activate
 
 ### Step #2: Install the Required Libraries
 
-Python LangChain スクレイピング 프로젝트는 다음 라이브러리에 의존합니다:
+Python LangChain 스크레이핑 프로젝트는 다음 라이브러리에 의존합니다:
 
 - [`python-dotenv`](https://pypi.org/project/python-dotenv/): `.env` 파일에서 환경 변수를 로드하기 위함입니다. Bright Data 및 OpenAI 자격 증명과 같은 민감한 정보를 관리하는 데 사용됩니다.
-- [`requests`](https://pypi.org/project/requests/): Bright Data의 Web Scraper API와 상호작용하기 위한 HTTP リクエスト 수행에 사용됩니다.
+- [`requests`](https://pypi.org/project/requests/): Bright Data의 Web Scraper API와 상호작용하기 위한 HTTP 요청 수행에 사용됩니다.
 - [`langchain_openai`](https://pypi.org/project/langchain-openai/): [`openai`](https://pypi.org/project/openai/) SDK를 통한 OpenAI용 LangChain 통합입니다.
 
 활성화된 가상 환경에서 모든 의존성을 설치합니다:
@@ -166,27 +166,27 @@ Web Scraper API는 요구 사항에 맞춘 작업을 시작한 다음, 스크랩
 2. **작업 실행:** API가 제공된 URL에서 데이터를 가져와 파싱합니다.
 3. **스냅샷 조회:** 작업이 완료되면 결과를 얻기 위해 스냅샷 API를 지속적으로 쿼리합니다.
 
-CNN Web Scraper API의 POST エンドポイント는 다음입니다:
+CNN Web Scraper API의 POST 엔드포인트는 다음입니다:
 
 ```
 "https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_lycz8783197ch4wvwg&include_errors=true"
 ```
 
-해당 エンドポイント는 `url` 필드를 포함하는 객체 배열을 받고, 다음과 같은 レスポンス를 반환합니다:
+해당 엔드포인트는 `url` 필드를 포함하는 객체 배열을 받고, 다음과 같은 응답를 반환합니다:
 
 ```json
 {"snapshot_id":"<YOUR_SNAPSHOT_ID>"}
 ```
 
-이 レスポンス의 `snapshot_id`를 사용하여, 데이터를 가져오기 위해 다음 エンドポイント를 쿼리해야 합니다:
+이 응답의 `snapshot_id`를 사용하여, 데이터를 가져오기 위해 다음 엔드포인트를 쿼리해야 합니다:
 
 ```
 https://api.brightdata.com/datasets/v3/snapshot/<YOUR_SNAPSHOT_ID>?format=json
 ```
 
-이 エンドポイント는 작업이 진행 중이면 HTTP 상태 코드 [`202`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/202)를 반환하고, 작업이 완료되어 데이터가 준비되면 [`200`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)을 반환합니다. 권장 접근 방식은 작업이 끝날 때까지 10초마다 이 エンドポイント를 폴링하는 것입니다.
+이 엔드포인트는 작업이 진행 중이면 HTTP 상태 코드 [`202`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/202)를 반환하고, 작업이 완료되어 데이터가 준비되면 [`200`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)을 반환합니다. 권장 접근 방식은 작업이 끝날 때까지 10초마다 이 엔드포인트를 폴링하는 것입니다.
 
-작업이 완료되면 エンドポイント는 다음 형식으로 데이터를 반환합니다:
+작업이 완료되면 엔드포인트는 다음 형식으로 데이터를 반환합니다:
 
 ```json
 [
@@ -218,7 +218,7 @@ https://api.brightdata.com/datasets/v3/snapshot/<YOUR_SNAPSHOT_ID>?format=json
 
 `content` 속성에는 파싱된 기사 데이터가 포함되어 있으며, 이는 여러분이 접근하려는 정보를 나타냅니다.
 
-이를 구현하려면 먼저 `.env`에서 env를 읽고 エンドポイント URL 상수를 초기화합니다:
+이를 구현하려면 먼저 `.env`에서 env를 읽고 엔드포인트 URL 상수를 초기화합니다:
 
 ```
 BRIGHT_DATA_API_TOKEN = os.environ.get("BRIGHT_DATA_API_TOKEN")
@@ -374,7 +374,7 @@ import json
 
 ### Step #10: Add Logs
 
-Web Scraping AI와 ChatGPT 분석을 사용하는 スクレイピング 프로세스는 시간이 다소 걸릴 수 있습니다. 스크립트 진행 상황을 추적하기 위해, 스크립트의 핵심 단계에 `print()` 구문을 추가하여 로그를 포함합니다:
+Web Scraping AI와 ChatGPT 분석을 사용하는 스크레이핑 프로세스는 시간이 다소 걸릴 수 있습니다. 스크립트 진행 상황을 추적하기 위해, 스크립트의 핵심 단계에 `print()` 구문을 추가하여 로그를 포함합니다:
 
 ```python
 article_url = "https://www.cnn.com/2024/12/16/weather/white-christmas-forecast-climate/"
@@ -537,7 +537,7 @@ Data exported to 'summary.json'
 이 접근 방식에는 몇 가지 과제가 있습니다:
 
 - **구조 변경:** 웹사이트는 레이아웃을 자주 업데이트합니다.
-- **アンチボット 조치:** 고급 방어가 일반적입니다.
+- **안티봇 조치:** 고급 방어가 일반적입니다.
 - **확장성:** 대량의 데이터 추출은 복잡하고 비용이 많이 들 수 있습니다.
 
 Bright Data의 Web Scraper API는 이러한 장애물을 극복하여, RAG 및 LangChain 기반 솔루션에 매우 유용한 도구가 됩니다.
